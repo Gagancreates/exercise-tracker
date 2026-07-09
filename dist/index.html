@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Exercise Tracker</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="dot"></div>
+        <h1>Exercise Tracker</h1>
+      </div>
+      <nav class="date-nav">
+        <button id="prevDay" class="icon-btn" title="Previous day">◀</button>
+        <input type="date" id="dateInput" />
+        <button id="nextDay" class="icon-btn" title="Next day">▶</button>
+        <button id="todayBtn" class="ghost-btn">Today</button>
+      </nav>
+    </header>
+
+    <main class="main">
+      <section class="summary card">
+        <div class="summary-row">
+          <div class="summary-item">
+            <div class="label">Exercises</div>
+            <div class="value" id="statExercises">0</div>
+          </div>
+          <div class="summary-item">
+            <div class="label">Sets</div>
+            <div class="value" id="statSets">0</div>
+          </div>
+          <div class="summary-item">
+            <div class="label">Total volume</div>
+            <div class="value" id="statVolume">0</div>
+            <div class="sub">weight × reps</div>
+          </div>
+        </div>
+        <div class="notes-wrap">
+          <label for="dayNotes" class="label">Notes for the day</label>
+          <textarea id="dayNotes" rows="2" placeholder="How did it feel? Energy, soreness, anything to remember..."></textarea>
+        </div>
+      </section>
+
+      <section id="exercisesList" class="exercises"></section>
+
+      <div class="add-row">
+        <input id="newExerciseName" type="text" placeholder="Add exercise (e.g. Bench Press, Squat, Pull-ups)" />
+        <button id="addExerciseBtn" class="primary-btn">+ Add exercise</button>
+      </div>
+
+      <section class="history card">
+        <div class="history-head">
+          <h2>Recent history</h2>
+          <span class="sub" id="historyCount"></span>
+        </div>
+        <div id="historyList" class="history-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <template id="exerciseTpl">
+    <div class="exercise card" data-exercise-id="">
+      <div class="exercise-head">
+        <input class="exercise-name" type="text" />
+        <div class="head-actions">
+          <button class="ghost-btn duplicate-btn" title="Copy sets from last time">↺ Last time</button>
+          <button class="danger-btn delete-exercise-btn" title="Delete exercise">✕</button>
+        </div>
+      </div>
+      <table class="sets-table">
+        <thead>
+          <tr>
+            <th class="col-idx">#</th>
+            <th>Weight</th>
+            <th>Reps</th>
+            <th>Notes</th>
+            <th class="col-actions"></th>
+          </tr>
+        </thead>
+        <tbody class="sets-body"></tbody>
+      </table>
+      <button class="ghost-btn add-set-btn">+ Add set</button>
+    </div>
+  </template>
+
+  <template id="setRowTpl">
+    <tr class="set-row">
+      <td class="col-idx set-idx"></td>
+      <td><input type="number" step="0.5" class="set-weight" placeholder="0" /></td>
+      <td><input type="number" step="1" class="set-reps" placeholder="0" /></td>
+      <td><input type="text" class="set-notes" placeholder="—" /></td>
+      <td class="col-actions"><button class="danger-btn delete-set-btn" title="Delete set">✕</button></td>
+    </tr>
+  </template>
+
+  <script src="./app.js"></script>
+</body>
+</html>

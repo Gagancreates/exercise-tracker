@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "name": "exercise-tracker",
+  "version": "0.1.0",
+  "description": "Track your daily exercises, sets, reps, and weights.",
+  "capabilities": [],
+  "dataContracts": [
+    { "file": "workouts.json", "requiredKeys": ["updatedAt", "days"], "nonEmptyArrayKeys": [] }
+  ]
+}
